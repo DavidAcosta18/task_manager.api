@@ -1,6 +1,6 @@
 const UserRoles = Object.freeze({
   ADMIN: 'ADMIN',
-  EDITOR: 'EDITOR',
+  MEMBER: 'MEMBER',
   VIEWER: 'VIEWER',
 });
 
