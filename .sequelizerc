@@ -1,0 +1,10 @@
+const { config } = require('./src/common');
+
+const dbConf = config.get('db');
+const url = `mysql://${dbConf.username}:${dbConf.password}@${dbConf.host}:${dbConf.port}/${dbConf.database}`;
+
+module.exports = {
+  url,
+  'migrations-path': './src/db/migrations',
+  'seeders-path': './src/db/seeders',
+}
