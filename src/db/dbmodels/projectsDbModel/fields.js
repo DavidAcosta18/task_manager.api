@@ -38,6 +38,7 @@ const fields = {
       model: 'users',
       key: 'id',
     },
+    allowNull: false,
   },
 };
 

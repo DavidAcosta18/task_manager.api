@@ -2,7 +2,7 @@ const { NotFoundError } = require('../common/errors');
 const Base = require('./Base');
 
 module.exports = ({ projectsRepository }) =>
-  class User extends Base {
+  class Projects extends Base {
     constructor(values) {
       super();
       this.setValues(values);
@@ -22,11 +22,12 @@ module.exports = ({ projectsRepository }) =>
       if (!record) {
         throw new NotFoundError();
       }
-      return new User(record);
+      return new Projects(record);
     }
 
     static async create(data) {
+      console.log(data, projectsRepository);
       const record = await projectsRepository.create(data);
-      return new User(record);
+      return new Projects(record);
     }
   };
