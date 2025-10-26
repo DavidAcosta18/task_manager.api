@@ -51,6 +51,14 @@ const fields = {
     },
     allowNull: false,
   },
+  createdAt: {
+    type: sequelize.DATE,
+    allowNull: false,
+  },
+  updatedAt: {
+    type: sequelize.DATE,
+    allowNull: false,
+  },
 };
 
 module.exports = fields;

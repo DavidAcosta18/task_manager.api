@@ -11,6 +11,8 @@ module.exports = {
         projectId: 1,
         assigneeId: 2,
         createdBy: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     ]);
   },

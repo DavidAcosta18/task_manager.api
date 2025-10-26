@@ -52,6 +52,14 @@ module.exports = {
         },
         allowNull: false,
       },
+      createdAt: {
+        type: sequelize.DATE,
+        allowNull: false,
+      },
+      updatedAt: {
+        type: sequelize.DATE,
+        allowNull: false,
+      },
     };
     return queryInterface.createTable('tasks', tableFields);
   },
