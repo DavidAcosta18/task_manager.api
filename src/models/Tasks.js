@@ -1,8 +1,8 @@
 const { NotFoundError } = require('../common/errors');
 const Base = require('./Base');
 
-module.exports = ({ projectsRepository }) =>
-  class Projects extends Base {
+module.exports = ({ tasksRepository }) =>
+  class Tasks extends Base {
     constructor(values) {
       super();
       this.setValues(values);
@@ -13,20 +13,20 @@ module.exports = ({ projectsRepository }) =>
     }
 
     async update(data) {
-      const updatedFields = await projectsRepository.update(this.id, data);
+      const updatedFields = await tasksRepository.update(this.id, data);
       this.setValues(updatedFields);
     }
 
     static async findOrFail(id) {
-      const record = await projectsRepository.findById(id);
+      const record = await tasksRepository.findById(id);
       if (!record) {
         throw new NotFoundError();
       }
-      return new Projects(record);
+      return new Tasks(record);
     }
 
     static async create(data) {
-      const record = await projectsRepository.create(data);
-      return new Projects(record);
+      const record = await tasksRepository.create(data);
+      return new Tasks(record);
     }
   };
