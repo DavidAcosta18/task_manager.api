@@ -4,5 +4,6 @@ router.get('/', (req, res) => res.json({ app: '', isUp: true }));
 
 router.use('/users', require('./controllers/userController'));
 router.use('/projects', require('./controllers/projectsController'));
+router.use('/tasks', require('./controllers/tasksController'));
 
 module.exports = router;
