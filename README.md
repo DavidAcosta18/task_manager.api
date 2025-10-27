@@ -89,3 +89,11 @@ MAIL_HOST=
 MAIL_PORT=
 MAIL_USERNAME =
 MAIL_PASSWORD=
+
+### Decisiones técnicas importantes Persistencia y Base de Datos (Backend
+
+Se decidió no definir las relaciones (.belongsTo(), .hasMany()) dentro de los archivos de definición de modelos individuales. En su lugar, las asociaciones se configuraron en un archivo central (index.js o associations.js) después de que todos los modelos se hayan cargado.
+Esto previene el error común de not a subclass of Sequelize.Model y resuelve los problemas de dependencia circular que son habituales en esquemas con muchas referencias mutuas (como Tareas referenciando Usuarios y viceversa).
+
+En todas las consultas que requieren incluir modelos relacionados (tasksDbModel.findOne({... include: [...]})), se utiliza el método .get({ plain: true }) antes de devolver la respuesta.
+Esta es la solución principal para evitar el error de Converting circular structure to JSON, ya que elimina todos los metadatos internos de Sequelize, dejando solo un objeto JSON limpio y serializable.
