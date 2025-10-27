@@ -12,6 +12,12 @@ module.exports.findById = async (id) => {
   return instance;
 };
 
+module.exports.findOne = (projectId, userId) => {
+  return projectMembersDbModel.findOne({
+    where: { projectId: { [Op.eq]: projectId }, userId: { [Op.eq]: userId } },
+    raw: true,
+  });
+};
 module.exports.search = () => {
   return projectMembersDbModel.findAll({
     attributes: ['id', 'projectId', 'userId', 'isLeader'],

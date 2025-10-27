@@ -4,8 +4,11 @@ const indexHandler = require('./indexHandler');
 const signInHandler = require('./signInHandler');
 const signUpHandler = require('./signUpHandler');
 const resetPasswordHandler = require('./resetPasswordHandler');
+const getMeHandler = require('./getMeHandler');
 
 router.get('/', jwtToUser, indexHandler);
+
+router.get('/me', jwtToUser, getMeHandler);
 
 router.post('/sign-up', signUpHandler);
 

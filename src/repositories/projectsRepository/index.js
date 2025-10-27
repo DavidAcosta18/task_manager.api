@@ -17,6 +17,23 @@ module.exports.search = () => {
   });
 };
 
+module.exports.findById = (id) => {
+  return projectsDbModel.findAll({
+    where: { leaderId: { [Op.eq]: id } },
+    attributes: [
+      'id',
+      'name',
+      'description',
+      'customColor',
+      'isActive',
+      'startDate',
+      'endDate',
+      'leaderId',
+    ],
+    raw: true,
+  });
+};
+
 module.exports.create = async (data) => {
   const instance = await projectsDbModel.create(data);
   return instance.toJSON();

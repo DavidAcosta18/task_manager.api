@@ -25,6 +25,15 @@ module.exports = ({ projectMembersRepository }) =>
       return new ProjectMembers(record);
     }
 
+    static async findOne(projectId, userId, failNotFound = false) {
+      const record = await projectMembersRepository.findOne(projectId, userId);
+      if (!record) {
+        if (failNotFound) throw new NotFoundError();
+        return null;
+      }
+      return new ProjectMembers(record);
+    }
+
     static async create(data) {
       const record = await projectMembersRepository.create(data);
       return new ProjectMembers(record);

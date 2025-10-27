@@ -5,7 +5,7 @@ module.exports = {
       {
         title: 'Initial Task',
         description: 'This is the first task description',
-        status: 'Pending',
+        status: 'TODO',
         priority: 'HIGH',
         dueDate: '2024-05-15',
         projectId: 1,

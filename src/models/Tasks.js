@@ -25,6 +25,10 @@ module.exports = ({ tasksRepository }) =>
       return new Tasks(record);
     }
 
+    static async findByProject(projectId) {
+      return tasksRepository.findByProject(projectId);
+    }
+
     static async create(data) {
       const record = await tasksRepository.create(data);
       return new Tasks(record);

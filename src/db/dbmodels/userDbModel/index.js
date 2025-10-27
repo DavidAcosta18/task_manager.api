@@ -1,4 +1,6 @@
 const connection = require('../../../common/connections/main');
 const fields = require('./fields');
 
-module.exports = connection.define('users', fields);
+const Users = connection.define('users', fields);
+
+module.exports = Users;

@@ -25,6 +25,14 @@ module.exports = ({ projectsRepository }) =>
       return new Projects(record);
     }
 
+    static async findById(id, failNotFound = false) {
+      const record = await projectsRepository.find(id);
+      if (!record && failNotFound) {
+        throw new NotFoundError();
+      }
+      return new Projects(record);
+    }
+
     static async create(data) {
       const record = await projectsRepository.create(data);
       return new Projects(record);
