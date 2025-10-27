@@ -1,12 +1,25 @@
 const { Op } = require('sequelize');
-const { tasksDbModel, userDbModel } = require('../../db/dbmodels');
+const { tasksDbModel, userDbModel, commentsDbModel } = require('../../db/dbmodels');
 
 module.exports.findById = async (id) => {
-  const instance = await tasksDbModel.findOne({
+  const instance = await tasksDbModel.findAll({
     where: {
       id: { [Op.eq]: id },
     },
-    raw: true,
+    include: [
+      {
+        model: commentsDbModel,
+        as: 'comments',
+        attributes: ['id', 'content', 'createdAt', 'userId'],
+        include: [
+          {
+            model: userDbModel,
+            as: 'author',
+            attributes: ['id', 'firstName', 'lastName', 'email', 'role'],
+          },
+        ],
+      },
+    ],
   });
 
   return instance;
@@ -26,7 +39,6 @@ module.exports.search = () => {
       'dueDate',
       'createdBy',
     ],
-    raw: true,
   });
 };
 

@@ -14,6 +14,26 @@ tasksDbModel.belongsTo(userDbModel, {
   foreignKey: 'assigneeId',
 });
 
+tasksDbModel.hasMany(commentsDbModel, {
+  as: 'comments',
+  foreignKey: 'taskId',
+});
+
+commentsDbModel.belongsTo(tasksDbModel, {
+  as: 'task',
+  foreignKey: 'taskId',
+});
+
+userDbModel.hasMany(commentsDbModel, {
+  as: 'comments',
+  foreignKey: 'userId',
+});
+
+commentsDbModel.belongsTo(userDbModel, {
+  as: 'author',
+  foreignKey: 'userId',
+});
+
 module.exports = {
   userDbModel,
   projectsDbModel,

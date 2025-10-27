@@ -2,6 +2,7 @@ const { Tasks, ProjectMembers } = require('../../models');
 const { validatorService } = require('../../services');
 const createTask = require('./createTask');
 const getProjectTasks = require('./getProjectTasks');
+const getTaskDetails = require('./getTaskDetails');
 const updateTaskStatus = require('./updateTaskStatus');
 
 module.exports = {
@@ -16,5 +17,8 @@ module.exports = {
     Tasks,
     validate: validatorService.validateForm,
     ProjectMembers,
+  }),
+  getTaskDetails: getTaskDetails({
+    Tasks,
   }),
 };

@@ -29,6 +29,14 @@ module.exports = ({ tasksRepository }) =>
       return tasksRepository.findByProject(projectId);
     }
 
+    static async findById(id, failNotFound = false) {
+      const record = await tasksRepository.findById(id);
+      if (!record && failNotFound) {
+        throw new NotFoundError();
+      }
+      return new Tasks(record);
+    }
+
     static async create(data) {
       const record = await tasksRepository.create(data);
       return new Tasks(record);
