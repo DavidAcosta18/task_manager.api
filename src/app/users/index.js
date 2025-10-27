@@ -10,7 +10,6 @@ const userFromToken = require('./userFromToken');
 
 module.exports = {
   createUser: createUser({
-    randService,
     securityService,
     User,
     validate: validatorService.validateForm,

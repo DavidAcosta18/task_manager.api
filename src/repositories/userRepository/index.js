@@ -25,7 +25,7 @@ module.exports.findByMail = async (email) => {
 
 module.exports.search = () => {
   return userDbModel.findAll({
-    attributes: ['id', 'email', 'isEnabled'],
+    attributes: ['id', 'email', 'isEnabled', 'firstName', 'lastName', 'role'],
     raw: true,
   });
 };

@@ -8,9 +8,12 @@ const { asyncHandler } = require('../../common');
  * @param {express.response} response
  */
 
-const storeHandler = async (request, response) => {
+const signUpHandler = async (request, response) => {
   const data = {
     email: request.body.email,
+    password: request.body.password,
+    firstName: request.body.firstName,
+    lastName: request.body.lastName,
   };
 
   const result = await transaction(() => createUser(data));
@@ -18,4 +21,4 @@ const storeHandler = async (request, response) => {
   return response.handle(result);
 };
 
-module.exports = asyncHandler(storeHandler);
+module.exports = asyncHandler(signUpHandler);

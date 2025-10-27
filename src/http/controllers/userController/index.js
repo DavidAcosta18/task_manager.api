@@ -2,12 +2,15 @@ const router = require('express').Router();
 const { jwtToUser } = require('../../middlewares');
 const indexHandler = require('./indexHandler');
 const signInHandler = require('./signInHandler');
-const storeHandler = require('./storeHandler');
+const signUpHandler = require('./signUpHandler');
 const resetPasswordHandler = require('./resetPasswordHandler');
+const getMeHandler = require('./getMeHandler');
 
 router.get('/', jwtToUser, indexHandler);
 
-router.post('/', jwtToUser, storeHandler);
+router.get('/me', jwtToUser, getMeHandler);
+
+router.post('/sign-up', signUpHandler);
 
 router.put('/:id(\\d+)/password', jwtToUser, resetPasswordHandler);
 

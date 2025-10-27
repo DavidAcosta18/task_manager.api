@@ -21,6 +21,16 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        email: 'menber@menber.com',
+        password,
+        role: UserRoles.MEMBER,
+        firstName: 'David',
+        lastName: 'Acosta',
+        isEnabled: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 

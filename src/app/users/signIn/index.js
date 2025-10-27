@@ -26,5 +26,5 @@ module.exports =
 
     const token = securityService.generateToken({ id: user.id });
 
-    return { token, isAdmin: user.isAdmin };
+    return { token, user };
   };
